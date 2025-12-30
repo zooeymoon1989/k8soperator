@@ -1,4 +1,4 @@
 apiVersion: v1
-kind: serviceaccount
+kind: ServiceAccount
 metadata:
   name: etcd-operator-sa
