@@ -24,6 +24,8 @@ spec:
           spec:
             type: object
             properties:
+              repository:
+                type: string
               size:
                 type: integer
               version:
