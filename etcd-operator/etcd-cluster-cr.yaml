@@ -4,4 +4,5 @@ metadata:
   name: example-etcd-cluster
 spec:
   size: 3
+  repository: quay.io/coreos/etcd
   version: v3.5.26
