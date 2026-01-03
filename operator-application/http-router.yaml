@@ -1,0 +1,21 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: visitors-frontend-server
+  namespace: default
+  # annotations:
+  #   traefik.io/router.tls.certresolver: letsencrypt
+spec:
+  parentRefs:
+  - name: traefik-gateway
+    namespace: default
+  hostnames:
+  - "visitors-frontend.osuk8s.site"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: visitors-frontend-service
+      port: 80
