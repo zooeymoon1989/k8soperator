@@ -1,0 +1,228 @@
+apiVersion: psmdb.percona.com/v1
+kind: PerconaServerMongoDB
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"psmdb.percona.com/v1","kind":"PerconaServerMongoDB","metadata":{"annotations":{},"finalizers":["percona.com/delete-psmdb-pods-in-order"],"name":"my-cluster-name","namespace":"psmdb"},"spec":{"backup":{"enabled":true,"image":"percona/percona-backup-mongodb:2.11.0","pitr":{"compressionLevel":6,"compressionType":"gzip","enabled":false,"oplogOnly":false}},"crVersion":"1.21.1","image":"percona/percona-server-mongodb:8.0.12-4","imagePullPolicy":"Always","logcollector":{"enabled":true,"image":"percona/fluentbit:4.0.1","resources":{"requests":{"cpu":"200m","memory":"100M"}}},"pmm":{"enabled":false,"image":"percona/pmm-client:3.4.1","serverHost":"monitoring-service"},"replsets":[{"affinity":{"antiAffinityTopologyKey":"kubernetes.io/hostname"},"arbiter":{"affinity":{"antiAffinityTopologyKey":"kubernetes.io/hostname"},"enabled":false,"resources":{"limits":{"cpu":"600m","memory":"1Gi"},"requests":{"cpu":"300m","memory":"1Gi"}},"size":1},"expose":{"enabled":false,"type":"ClusterIP"},"hidden":{"affinity":{"antiAffinityTopologyKey":"kubernetes.io/hostname"},"enabled":false,"podDisruptionBudget":{"maxUnavailable":1},"resources":{"limits":{"cpu":"600m","memory":"1Gi"},"requests":{"cpu":"300m","memory":"1Gi"}},"size":2,"volumeSpec":{"persistentVolumeClaim":{"resources":{"requests":{"storage":"3Gi"}}}}},"name":"rs0","nonvoting":{"affinity":{"antiAffinityTopologyKey":"kubernetes.io/hostname"},"enabled":false,"podDisruptionBudget":{"maxUnavailable":1},"resources":{"limits":{"cpu":"600m","memory":"1Gi"},"requests":{"cpu":"300m","memory":"1Gi"}},"size":3,"volumeSpec":{"persistentVolumeClaim":{"resources":{"requests":{"storage":"3Gi"}}}}},"podDisruptionBudget":{"maxUnavailable":1},"resources":{"limits":{"cpu":"600m","memory":"1Gi"},"requests":{"cpu":"300m","memory":"1Gi"}},"size":3,"volumeSpec":{"persistentVolumeClaim":{"resources":{"requests":{"storage":"3Gi"}}}}}],"secrets":{"encryptionKey":"my-cluster-name-mongodb-encryption-key","users":"my-cluster-name-secrets"},"sharding":{"configsvrReplSet":{"affinity":{"antiAffinityTopologyKey":"kubernetes.io/hostname"},"expose":{"enabled":false,"type":"ClusterIP"},"podDisruptionBudget":{"maxUnavailable":1},"resources":{"limits":{"cpu":"600m","memory":"1Gi"},"requests":{"cpu":"300m","memory":"1Gi"}},"size":3,"volumeSpec":{"persistentVolumeClaim":{"resources":{"requests":{"storage":"3Gi"}}}}},"enabled":true,"mongos":{"affinity":{"antiAffinityTopologyKey":"kubernetes.io/hostname"},"expose":{"type":"ClusterIP"},"podDisruptionBudget":{"maxUnavailable":1},"resources":{"limits":{"cpu":"600m","memory":"1Gi"},"requests":{"cpu":"300m","memory":"1Gi"}},"size":3}},"updateStrategy":"SmartUpdate","upgradeOptions":{"apply":"disabled","schedule":"0 2 * * *","setFCV":false,"versionServiceEndpoint":"https://check.percona.com"}}}
+  creationTimestamp: "2026-01-01T14:23:03Z"
+  finalizers:
+  - percona.com/delete-psmdb-pods-in-order
+  generation: 1
+  name: my-cluster-name
+  namespace: psmdb
+  resourceVersion: "64396861"
+  uid: 144d3d07-6889-44b4-a5b5-dbe399e19f5b
+spec:
+  backup:
+    enabled: true
+    image: percona/percona-backup-mongodb:2.11.0
+    pitr:
+      compressionLevel: 6
+      compressionType: gzip
+      enabled: false
+      oplogOnly: false
+  crVersion: 1.21.1
+  image: percona/percona-server-mongodb:8.0.12-4
+  imagePullPolicy: Always
+  logcollector:
+    enabled: true
+    image: percona/fluentbit:4.0.1
+    resources:
+      requests:
+        cpu: 200m
+        memory: 100M
+  pmm:
+    enabled: false
+    image: percona/pmm-client:3.4.1
+    serverHost: monitoring-service
+  replsets:
+  - affinity:
+      antiAffinityTopologyKey: kubernetes.io/hostname
+    arbiter:
+      affinity:
+        antiAffinityTopologyKey: kubernetes.io/hostname
+      enabled: false
+      resources:
+        limits:
+          cpu: 600m
+          memory: 1Gi
+        requests:
+          cpu: 300m
+          memory: 1Gi
+      size: 1
+    expose:
+      enabled: false
+      type: ClusterIP
+    hidden:
+      affinity:
+        antiAffinityTopologyKey: kubernetes.io/hostname
+      enabled: false
+      podDisruptionBudget:
+        maxUnavailable: 1
+      resources:
+        limits:
+          cpu: 600m
+          memory: 1Gi
+        requests:
+          cpu: 300m
+          memory: 1Gi
+      size: 2
+      volumeSpec:
+        persistentVolumeClaim:
+          resources:
+            requests:
+              storage: 3Gi
+    name: rs0
+    nonvoting:
+      affinity:
+        antiAffinityTopologyKey: kubernetes.io/hostname
+      enabled: false
+      podDisruptionBudget:
+        maxUnavailable: 1
+      resources:
+        limits:
+          cpu: 600m
+          memory: 1Gi
+        requests:
+          cpu: 300m
+          memory: 1Gi
+      size: 3
+      volumeSpec:
+        persistentVolumeClaim:
+          resources:
+            requests:
+              storage: 3Gi
+    podDisruptionBudget:
+      maxUnavailable: 1
+    resources:
+      limits:
+        cpu: 600m
+        memory: 1Gi
+      requests:
+        cpu: 300m
+        memory: 1Gi
+    size: 3
+    volumeSpec:
+      persistentVolumeClaim:
+        resources:
+          requests:
+            storage: 3Gi
+  secrets:
+    encryptionKey: my-cluster-name-mongodb-encryption-key
+    users: my-cluster-name-secrets
+  sharding:
+    configsvrReplSet:
+      affinity:
+        antiAffinityTopologyKey: kubernetes.io/hostname
+      expose:
+        enabled: false
+        type: ClusterIP
+      podDisruptionBudget:
+        maxUnavailable: 1
+      resources:
+        limits:
+          cpu: 600m
+          memory: 1Gi
+        requests:
+          cpu: 300m
+          memory: 1Gi
+      size: 3
+      volumeSpec:
+        persistentVolumeClaim:
+          resources:
+            requests:
+              storage: 3Gi
+    enabled: true
+    mongos:
+      affinity:
+        antiAffinityTopologyKey: kubernetes.io/hostname
+      expose:
+        type: ClusterIP
+      podDisruptionBudget:
+        maxUnavailable: 1
+      resources:
+        limits:
+          cpu: 600m
+          memory: 1Gi
+        requests:
+          cpu: 300m
+          memory: 1Gi
+      size: 3
+  updateStrategy: SmartUpdate
+  upgradeOptions:
+    apply: disabled
+    schedule: 0 2 * * *
+    setFCV: false
+    versionServiceEndpoint: https://check.percona.com
+status:
+  conditions:
+  - lastTransitionTime: "2026-01-01T14:23:03Z"
+    status: "True"
+    type: sharding
+  - lastTransitionTime: "2026-01-01T14:23:15Z"
+    status: "True"
+    type: initializing
+  - lastTransitionTime: "2026-01-01T14:27:03Z"
+    message: 'failed to update config members: get replset config: replSetGetConfig:
+      connection() error occurred during connection handshake: auth error: unable
+      to authenticate using mechanism "SCRAM-SHA-256": (KeyNotFound) No keys found
+      for HMAC that is valid for time: { ts: Timestamp(1767279291, 2) } with id: 7590399640982257672'
+    reason: ErrorReconcile
+    status: "True"
+    type: error
+  - lastTransitionTime: "2026-01-01T14:27:30Z"
+    message: 'cfg: ready'
+    reason: RSReady
+    status: "True"
+    type: ready
+  host: my-cluster-name-mongos.psmdb.svc.cluster.local:27017
+  mongos:
+    message: '0/7 nodes are available: 3 node(s) had untolerated taint(s), 4 Insufficient
+      memory. no new claims to deallocate, preemption: 0/7 nodes are available: 3
+      Preemption is not helpful for scheduling, 4 No preemption victims found for
+      incoming pod.'
+    ready: 2
+    size: 3
+    status: initializing
+  observedGeneration: 1
+  ready: 7
+  replsets:
+    cfg:
+      initialized: true
+      members:
+        my-cluster-name-cfg-0:
+          name: my-cluster-name-cfg-0.my-cluster-name-cfg.psmdb.svc.cluster.local:27017
+          state: 1
+          stateStr: PRIMARY
+        my-cluster-name-cfg-1:
+          name: my-cluster-name-cfg-1.my-cluster-name-cfg.psmdb.svc.cluster.local:27017
+          state: 8
+          stateStr: (not reachable/healthy)
+        my-cluster-name-cfg-2:
+          name: my-cluster-name-cfg-2.my-cluster-name-cfg.psmdb.svc.cluster.local:27017
+          state: 2
+          stateStr: SECONDARY
+      message: 'mongod: back-off 5m0s restarting failed container=mongod pod=my-cluster-name-cfg-1_psmdb(31741dc8-5f93-4cd5-b8c1-b7a00f796f18); '
+      ready: 2
+      size: 3
+      status: initializing
+    rs0:
+      initialized: true
+      members:
+        my-cluster-name-rs0-0:
+          name: my-cluster-name-rs0-0.my-cluster-name-rs0.psmdb.svc.cluster.local:27017
+          state: 1
+          stateStr: PRIMARY
+        my-cluster-name-rs0-1:
+          name: my-cluster-name-rs0-1.my-cluster-name-rs0.psmdb.svc.cluster.local:27017
+          state: 2
+          stateStr: SECONDARY
+        my-cluster-name-rs0-2:
+          name: my-cluster-name-rs0-2.my-cluster-name-rs0.psmdb.svc.cluster.local:27017
+          state: 2
+          stateStr: SECONDARY
+      ready: 3
+      size: 3
+      status: ready
+  size: 9
+  state: initializing
