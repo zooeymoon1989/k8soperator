@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: visitors-mysql
-          image: "mysql:8.5"
+          image: "mysql:8.4.7"
           imagePullPolicy: Always
           ports:
             - name: mysql
